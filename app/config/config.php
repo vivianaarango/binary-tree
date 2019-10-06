@@ -19,7 +19,7 @@ return new \Phalcon\Config(array(
         'constantsDir'   => __DIR__ . '/../../app/library/constants',
         'enumsDir'       => __DIR__ . '/../../app/library/constants/enums',
         'tasksDir'       => __DIR__ . '/../../app/tasks',
-        'baseUri' => '/api-poop/',
+        'baseUri' => '/prueba-masivian/',
     ),
 
 ));
