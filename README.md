@@ -16,7 +16,8 @@ Los pasos para poder ejecutar la solución son los siguientes:
     
 3. En este paso ya el proyecto esta configurado, para ver la solución se deben consumir los siguientes servicios REST:
 
-a. CREAR ARBOL BINARIO
+3.1. 
+  CREAR ARBOL BINARIO
   URL: http://localhost//prueba-masivian/binarytree/create
   DATOS:
   {
@@ -67,7 +68,8 @@ a. CREAR ARBOL BINARIO
       "status": 200
   }
 
-a. ANCESTRO COMUN MAS CERCANO ENTRE 2 NODOS 
+3.2.
+  ANCESTRO COMUN MAS CERCANO ENTRE 2 NODOS 
   URL: http://localhost//prueba-masivian/binarytree/lowestCommonAncestor
   DATOS:
   id_tree:9
