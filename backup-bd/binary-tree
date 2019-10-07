@@ -1,0 +1,237 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.7
+-- Dumped by pg_dump version 11.1
+
+-- Started on 2019-10-06 19:24:40
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 197 (class 1259 OID 24770)
+-- Name: node; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.node (
+    id_node bigint NOT NULL,
+    value_node integer NOT NULL,
+    id_parent integer NOT NULL,
+    id_tree integer NOT NULL
+);
+
+
+ALTER TABLE public.node OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 24768)
+-- Name: node_id_node_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.node_id_node_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.node_id_node_seq OWNER TO postgres;
+
+--
+-- TOC entry 2814 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: node_id_node_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.node_id_node_seq OWNED BY public.node.id_node;
+
+
+--
+-- TOC entry 199 (class 1259 OID 24778)
+-- Name: tree; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tree (
+    id_tree bigint NOT NULL,
+    name text NOT NULL
+);
+
+
+ALTER TABLE public.tree OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 24776)
+-- Name: tree_id_tree_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tree_id_tree_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tree_id_tree_seq OWNER TO postgres;
+
+--
+-- TOC entry 2815 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: tree_id_tree_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tree_id_tree_seq OWNED BY public.tree.id_tree;
+
+
+--
+-- TOC entry 2677 (class 2604 OID 24773)
+-- Name: node id_node; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.node ALTER COLUMN id_node SET DEFAULT nextval('public.node_id_node_seq'::regclass);
+
+
+--
+-- TOC entry 2678 (class 2604 OID 24781)
+-- Name: tree id_tree; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tree ALTER COLUMN id_tree SET DEFAULT nextval('public.tree_id_tree_seq'::regclass);
+
+
+--
+-- TOC entry 2806 (class 0 OID 24770)
+-- Dependencies: 197
+-- Data for Name: node; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.node (id_node, value_node, id_parent, id_tree) FROM stdin;
+10	67	0	1
+11	39	10	1
+12	76	10	1
+13	28	11	1
+14	44	11	1
+15	74	12	1
+16	85	12	1
+17	83	16	1
+18	87	16	1
+19	29	13	1
+47	60	0	6
+48	21	47	6
+49	23	47	6
+50	31	48	6
+51	30	48	6
+52	55	51	6
+53	15	49	6
+54	98	49	6
+55	60	0	7
+56	21	55	7
+57	23	55	7
+58	31	56	7
+59	30	56	7
+60	55	59	7
+61	15	57	7
+62	98	57	7
+63	60	0	8
+64	21	63	8
+65	23	63	8
+66	31	64	8
+67	30	64	8
+68	55	67	8
+69	15	65	8
+70	98	65	8
+71	60	0	9
+72	21	71	9
+73	23	71	9
+74	31	72	9
+75	30	72	9
+76	55	75	9
+77	15	73	9
+78	98	73	9
+\.
+
+
+--
+-- TOC entry 2808 (class 0 OID 24778)
+-- Dependencies: 199
+-- Data for Name: tree; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tree (id_tree, name) FROM stdin;
+1	arbol-prueba
+2	Prueba arbol
+3	Prueba arbol
+4	Prueba arbol
+5	Prueba arbol
+6	Prueba arbol
+7	Prueba arbol
+8	Prueba arbol
+9	Prueba arbol
+\.
+
+
+--
+-- TOC entry 2816 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: node_id_node_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.node_id_node_seq', 78, true);
+
+
+--
+-- TOC entry 2817 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: tree_id_tree_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tree_id_tree_seq', 9, true);
+
+
+--
+-- TOC entry 2680 (class 2606 OID 24775)
+-- Name: node node_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.node
+    ADD CONSTRAINT node_pkey PRIMARY KEY (id_node);
+
+
+--
+-- TOC entry 2682 (class 2606 OID 24786)
+-- Name: tree tree_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tree
+    ADD CONSTRAINT tree_pkey PRIMARY KEY (id_tree);
+
+
+--
+-- TOC entry 2683 (class 2606 OID 24787)
+-- Name: node id_tree; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.node
+    ADD CONSTRAINT id_tree FOREIGN KEY (id_tree) REFERENCES public.tree(id_tree);
+
+
+-- Completed on 2019-10-06 19:24:40
+
+--
+-- PostgreSQL database dump complete
+--
+
