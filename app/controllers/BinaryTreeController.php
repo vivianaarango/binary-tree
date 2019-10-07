@@ -20,15 +20,17 @@ class BinaryTreeController extends ControllerBase {
         if ($this->_checkFields($dataRequest, $fields)) {
 
             try {
-
+                
                 $nodea = Node::findFirst(array(
-                    "conditions" => "value_node = ?1",
-                    "bind" => array(1 => $dataRequest->node_1)
+                    "conditions" => "value_node = ?1 and id_tree = ?2",
+                    "bind" => array(1 => $dataRequest->node_1,
+                                    2 => $dataRequest->id_tree)
                 ));
                 
                 $nodeb = Node::findFirst(array(
-                    "conditions" => "value_node = ?1",
-                    "bind" => array(1 => $dataRequest->node_2)
+                    "conditions" => "value_node = ?1 and id_tree = ?2",
+                    "bind" => array(1 => $dataRequest->node_2,
+                                    2 => $dataRequest->id_tree)
                 ));
 
                 if (isset($nodea->id_parent) && isset($nodeb->id_parent)) {
@@ -44,14 +46,16 @@ class BinaryTreeController extends ControllerBase {
                         while ($i != $j) {  
                             //$count++;              
                             $nodea = Node::findFirst(array(
-                                "conditions" => "id_node = ?1",
-                                "bind" => array(1 => $i),
+                                "conditions" => "id_node = ?1 and id_tree = ?2",
+                                "bind" => array(1 => $i,
+                                                2 => $dataRequest->id_tree),
                                 'order' => "id_node ASC"
                             ));
 
                             $nodeb = Node::findFirst(array(
-                                "conditions" => "id_node = ?1",
-                                "bind" => array(1 => $j),
+                                "conditions" => "id_node = ?1 and id_tree = ?2",
+                                "bind" => array(1 => $j,
+                                                2 => $dataRequest->id_tree),
                                 'order' => "id_node ASC"
                             ));
                             
