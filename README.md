@@ -1,5 +1,7 @@
 # binary-tree
 
+Para poder instalar el proyecto es necesario descargar y tener instalado PHP y el framework PHALCON
+
 Los pasos para poder ejecutar la solución son los siguientes:
 
 1. Crear la base de datos: Esta debe ser creada en PostgreSQL, en la carpeta 'backup bd' se encuentra el backup de esta.
